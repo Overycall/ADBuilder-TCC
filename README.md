@@ -134,6 +134,7 @@ sudo python3 -m pip install requests==2.22.0
 
 
 ```
+--file = informa qual o arquivo .txt que contém os sha256 dos APKs que se deseja baixar e rotular (utilizar em conjunto com --download e --labelling).
 --download (lista_de_sha256.txt) = realiza download de aplicativos obtidos pelo arquivo .txt fornecido.
 -npd (processos) = insira um número inteiro (e.g., 5) de processos para download (por padrão é 1).
 --extraction = extrai características dos aplicativos.
