@@ -70,12 +70,12 @@ A ferramenta foi testada e utilizada na prática nos seguintes ambientes:
 Ubuntu 22.04 LTS
 * Kernel = ``` 5.15.0-41 generic ```
 * Python = ``` 3.10.4 ```
-* Ferramentas: ``` curl, time, pandas (versão 1.3.5), androguard (versão 3.3.5), networkx (versão 2.2), lxml (versão 4.5), numpy (versão 1.22.3), Termcolor (versão 1.1.0), Pyfiglet (versão 0.8.post1, Requests (versão 2.22.0). ```
+* Ferramentas: ``` curl, time, pandas (versão 1.3.5), androguard (versão 3.3.5), networkx (versão 2.2), lxml (versão 4.5), numpy (versão 1.22.3), Termcolor (versão 1.1.0), Pyfiglet (versão 0.8.post1), Requests (versão 2.22.0). ```
 
 Ubuntu 20.04 LTS
 * Kernel = ``` 5.10.16.3-microsoft-standard-WSL2 ```
 * Python = ``` 3.8.10 ```
-* Ferramentas: ``` curl, time, pandas (versão 1.3.5), androguard (versão 3.3.5), networkx (versão 2.2), lxml (versão 4.5), numpy (versão 1.22.3), Termcolor (versão 1.1.0), Pyfiglet (versão 0.8.post1, Requests (versão 2.22.0). ```
+* Ferramentas: ``` curl, time, pandas (versão 1.3.5), androguard (versão 3.3.5), networkx (versão 2.2), lxml (versão 4.5), numpy (versão 1.22.3), Termcolor (versão 1.1.0), Pyfiglet (versão 0.8.post1), Requests (versão 2.22.0). ```
 
 <div id="preparando-o-ambiente"/>
 
