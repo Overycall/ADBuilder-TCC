@@ -70,12 +70,12 @@ A ferramenta foi testada e utilizada na prática nos seguintes ambientes:
 Ubuntu 22.04 LTS
 * Kernel = ``` 5.15.0-41 generic ```
 * Python = ``` 3.10.4 ```
-* Ferramentas: ``` curl, time, pandas (versão 1.3.5), androguard (versão 3.3.5), networkx (versão 2.2), lxml (versão 4.5), numpy (versão 1.22.3). ```
+* Ferramentas: ``` curl, time, pandas (versão 1.3.5), androguard (versão 3.3.5), networkx (versão 2.2), lxml (versão 4.5), numpy (versão 1.22.3), Termcolor (versão 1.1.0), Pyfiglet (versão 0.8.post1, Requests (versão 2.22.0). ```
 
 Ubuntu 20.04 LTS
 * Kernel = ``` 5.10.16.3-microsoft-standard-WSL2 ```
 * Python = ``` 3.8.10 ```
-* Ferramentas: ``` curl, time, pandas (versão 1.3.5), androguard (versão 3.3.5), networkx (versão 2.2), lxml (versão 4.5), numpy (versão 1.22.3). ```
+* Ferramentas: ``` curl, time, pandas (versão 1.3.5), androguard (versão 3.3.5), networkx (versão 2.2), lxml (versão 4.5), numpy (versão 1.22.3), Termcolor (versão 1.1.0), Pyfiglet (versão 0.8.post1, Requests (versão 2.22.0). ```
 
 <div id="preparando-o-ambiente"/>
 
@@ -86,11 +86,11 @@ sudo apt-get install git -y
 ```
 Clone o Repositório
 ```
-git clone https://github.com/Malware-Hunter/ADBuilder-V2.git
+git clone https://github.com/Overycall/ADBuilder-TCC
 ```
 Nós disponibilizamos um arquivo shell de setup que contém configurações de permissões e dependências necessárias. Portanto, para preparar o ambiente, basta executar o seguinte comando:
 ```
-cd sf22_adbuilder
+cd ADBuilder-TCC
 ./scripts/setup.sh
 ```
 Caso prefira, você pode instalar as dependências individualmente utilizando os seguintes comandos:
@@ -108,26 +108,6 @@ sudo python3 -m pip install pyfiglet==0.8.post1
 sudo python3 -m pip install requests==2.22.0
 ```
 
-## Using Docker
-
-- Step 1: Create Image
-
-    ```sh
-    $ docker build -t IMAGE_NAME .
-    ```
-
-- Step 2: Run Container and Access Container Shell
-
-  **Not Persistent**
-    ```sh
-    $ docker run -it IMAGEM_NAME /bin/bash
-    ```
-
-  **Persistent**
-    ```sh
-    $ docker run -v VOLUME_NAME:/adbuilder -it IMAGEM_NAME /bin/bash
-    ```
-
 <div id="parametros-disponiveis"/>
 
 ### 📌 Parâmetros disponíveis:
@@ -140,7 +120,7 @@ sudo python3 -m pip install requests==2.22.0
 --extraction = extrai características dos aplicativos.
 -npe (processos) = insira um número inteiro (e.g., 5) de processos de extração (por padrão é 1).
 --labelling (lista_de_sha256.txt) = realiza a rotulação dos aplicativos obtidos pelo arquivo .txt fornecido.
--vt_keys (lista_de_keys_virustotal.txt) = insira um arquivo com API keys do VirusTotal.
+--vt_keys (lista_de_keys_virustotal.txt) = insira um arquivo com API keys do VirusTotal.
 --building = gera o dataset final.
 ```
 
@@ -159,33 +139,33 @@ sudo python3 -m pip install requests==2.22.0
 ### 👨‍💻 Exemplo de uso
 Entre no diretório principal:
 ```
-cd sf22_adbuilder
+cd ADBuilder-TCC
 ```
 O seguinte comando executa todos módulos integrados. Basta passar os parâmetros que preferir:
 ```
-python3 adbuilder.py --file inputs/androzoo/sha256_6_APKs_rand.txt --download -npd 2 --extraction -npe 2 --labelling --vt_keys ./inputs/virustotal_api_keys.txt --building
+python3 adbuilder.py --file inputs/androzoo/input_sha256.txt --download -npd 2 --extraction -npe 2 --labelling --vt_keys ./inputs/virustotal_api_keys.txt --building
 ```
 É possível executar cada módulo individualmente, conforme exemplos de uso:
 ```
-python3 adbuilder.py --download --file inputs/androzoo/sha256_6_APKs_rand.txt
+python3 adbuilder.py --download --file inputs/androzoo/input_sha256.txt
 python3 adbuilder.py --extraction
-python3 adbuilder.py --labelling --file inputs/androzoo/sha256_6_APKs_rand.txt -vt_keys ./inputs/virustotal_api_keys.txt
+python3 adbuilder.py --labelling --file inputs/androzoo/input_sha256.txt -vt_keys ./inputs/virustotal_api_keys.txt
 python3 adbuilder.py --building
 ```
 Também é possível executar os módulos de download e extração com mais de um processo, por exemplo:
 ```
-python3 adbuilder.py --download --file inputs/androzoo/sha256_6_APKs_rand.txt -npd 3 (download com três processos)
+python3 adbuilder.py --download --file inputs/androzoo/input_sha256.txt -npd 3 (download com três processos)
 python3 adbuilder.py --extraction -npe 3 (extração com três processos)
-python3 adbuilder.py --download --file inputs/androzoo/sha256_6_APKs_rand.txt -npd 3 -f-extraction -npe 2 (download com três processos e extração com dois processos)
+python3 adbuilder.py --download --file inputs/androzoo/input_sha256.txt -npd 3 --extraction -npe 2 (download com três processos e extração com dois processos)
 
 ```
 Por fim, é possível executar módulos em conjunto, conforme exemplos:
 ```
-python3 adbuilder.py --download --file inputs/androzoo/sha256_6_APKs_rand.txt -npd 3 --extraction -npe 3 --building
-python3 adbuilder.py --download --file inputs/androzoo/sha256_6_APKs_rand.txt --extraction
-python3 adbuilder.py --extraction --labelling --file inputs/androzoo/sha256_6_APKs_rand.txt --vt_keys ./inputs/virustotal_api_keys.txt
-python3 adbuilder.py --download --file inputs/androzoo/sha256_6_APKs_rand.txt --extraction --labelling --vt_keys ./inputs/virustotal_api_keys.txt
-python3 adbuilder.py  --extraction --labelling --file inputs/androzoo/sha256_6_APKs_rand.txt --vt_keys ./inputs/virustotal_api_keys.txt --building
+python3 adbuilder.py --download --file inputs/androzoo/input_sha256.txt -npd 3 --extraction -npe 3 --building
+python3 adbuilder.py --download --file inputs/androzoo/input_sha256.txt --extraction
+python3 adbuilder.py --extraction --labelling --file inputs/androzoo/input_sha256.txt --vt_keys ./inputs/virustotal_api_keys.txt
+python3 adbuilder.py --download --file inputs/androzoo/input_sha256.txt --extraction --labelling --vt_keys ./inputs/virustotal_api_keys.txt
+python3 adbuilder.py  --extraction --labelling --file inputs/androzoo/input_sha256.txt --vt_keys ./inputs/virustotal_api_keys.txt --building
 ```
 
 ***OBS: O dataset final é gerado na fila do módulo de geração, na pasta: queues/building/Final.***
