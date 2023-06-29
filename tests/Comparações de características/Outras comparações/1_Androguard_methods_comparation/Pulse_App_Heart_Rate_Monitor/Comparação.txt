@@ -1,0 +1,5 @@
+** Comparação dos métodos de extração de API Calls do Androguard **
+
+(Pulse App Heart Rate Monitor)
+Androguard CG    >> 40.105
+Androguard XREFs >> 25.806

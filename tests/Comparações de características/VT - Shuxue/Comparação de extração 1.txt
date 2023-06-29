@@ -1,0 +1,45 @@
+sha256: 000BCD30B12CBA5ED7EC9FE0F457538580E046038B1E80DF9225239B46F2C569
+
+** Análise do VT **
+
+"Activities": [
+"com.touchtech.shuxue.gameShuzi",
+"com.pp.sdk.main.TheActivity",
+"com.qq.e.ads.ADActivity",
+"com.qq.e.ads.PortraitADActivity",
+"com.qq.e.ads.LandscapeADActivity",
+"com.pp.sdk.SplashActivity"
+],
+
+"Services": [
+"com.pp.sdk.main.TheService",
+"com.pp.sdk.downloader.RPPDBindService",
+"com.qq.e.comm.DownloadService"
+],
+
+"Intent": [
+"com.pp.sdk.downloader.RPPDownloadService",
+"android.intent.action.MAIN",
+"android.intent.category.LAUNCHER"
+],
+
+"Receivers": [
+],
+
+"Providers": [
+"android.support.v4.content.FileProvider"
+],
+
+"Permissions": [
+"android.permission.INTERNET",
+"android.permission.ACCESS_NETWORK_STATE",
+"android.permission.ACCESS_COARSE_LOCATION",
+"android.permission.REQUEST_INSTALL_PACKAGES",
+"android.permission.ACCESS_WIFI_STATE",
+"android.permission.READ_PHONE_STATE",
+"android.permission.WRITE_EXTERNAL_STORAGE"
+],
+
+OBS: As mesmas características foram extraídas, tanto para permissões, provedores, intenções, serviços e atividades.
+Os receptores não foram encontrados no APK.
+Os opcodes e chamadas de API não foram retornadas pelo VirusTotal, porém na ferramenta ADBuilder elas foram extraídas.

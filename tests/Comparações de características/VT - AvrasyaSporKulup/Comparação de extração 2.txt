@@ -1,0 +1,55 @@
+sha256: 001A0B2673ADEB1F3849D78044E31D97492D6487819D3A82EF6091423449E803
+
+** Análise do VT **
+
+"Intents": [
+"com.google.firebase.INSTANCE_ID_EVENT",
+"com.google.firebase.MESSAGING_EVENT",
+"com.google.firebase.INSTANCE_ID_EVENT",
+"com.google.firebase.MESSAGING_EVENT",
+"android.intent.action.MAIN",
+"android.intent.category.LAUNCHER",
+"com.google.android.c2dm.intent.RECEIVE",
+"com.google.android.c2dm.intent.REGISTRATION",
+"com.muratakpinar.AvrasyaSporKulup",
+"com.google.android.c2dm.intent.REGISTRATION",
+"com.google.android.c2dm.intent.RECEIVE",
+"com.muratakpinar.AvrasyaSporKulup"
+],
+
+"Activities": [
+"com.google.android.gms.ads.AdActivity",
+"md599ced91971203b9d8dd18e3bcaed8ccf.MainActivity",
+"com.google.android.gms.ads.AdActivity",
+"com.google.android.gms.common.api.GoogleApiActivity"
+],
+
+"Services": [
+"md599ced91971203b9d8dd18e3bcaed8ccf.MyFirebaseIIDService",               "md599ced91971203b9d8dd18e3bcaed8ccf.MyFirebaseMessagingService",
+"com.microsoft.appcenter.push.TokenService",
+"com.google.firebase.messaging.FirebaseMessagingService"
+],
+
+"Providers": [
+"mono.MonoRuntimeProvider",
+"com.google.firebase.provider.FirebaseInitProvider"
+],
+
+"Permissions": [
+"com.google.android.c2dm.permission.RECEIVE",
+"android.permission.ACCESS_WIFI_STATE",
+"android.permission.WAKE_LOCK",
+"android.permission.ACCESS_NETWORK_STATE",
+"android.permission.INTERNET",
+"android.permission.WRITE_EXTERNAL_STORAGE"
+],
+
+"Receivers": [
+"com.google.firebase.iid.FirebaseInstanceIdInternalReceiver",
+"com.google.firebase.iid.FirebaseInstanceIdReceiver",
+"md50d7658ca0fc01b95086956189e698682.PushReceiver",               "md59628c2715c1bb8febcc7ae8402df0582.ConnectivityChangeBroadcastReceiver",
+"md51558244f76c53b6aeda52c8a337f2c37.PowerSaveModeBroadcastReceiver"
+],
+
+OBS: As mesmas características foram extraídas, tanto para permissões, provedores, intenções, serviços, atividades e receptores.
+Os opcodes e chamadas de API não foram retornadas pelo VirusTotal, porém na ferramenta ADBuilder elas foram extraídas.
