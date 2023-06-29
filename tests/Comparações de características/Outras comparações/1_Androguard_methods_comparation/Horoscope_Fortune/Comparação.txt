@@ -1,0 +1,5 @@
+** Comparação dos métodos de extração de API Calls do Androguard **
+
+(Horoscope Fortune)
+Androguard CG    >> 17.922
+Androguard XREFs >> 12.373
