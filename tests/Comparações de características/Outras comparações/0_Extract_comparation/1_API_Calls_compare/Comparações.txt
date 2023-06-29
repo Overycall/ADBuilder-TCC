@@ -1,0 +1,9 @@
+** 6cfa96a0d96e9888d695c9c2073d95cae50867c5892f136f9e6035076b3029a9 **
+(API Calls)
+Nossa extração >> 97.607
+MalScan >> 97.606
+
+** 0b3ae8423911939db258a084e57c32bf01ec31591d70e2b5bdac1a909033254b **
+(API Calls)
+Nossa extração >> 18.895
+MalScan >> 18.895
