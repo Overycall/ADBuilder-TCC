@@ -1,0 +1,17 @@
+SHA256: 0b3ae8423911939db258a084e57c32bf01ec31591d70e2b5bdac1a909033254b
+
+*** Apktool ***
+Permissões: 32
+Intenções: 27
+Atividades: 10
+Serviços: 15
+Receptores: 16
+Provedores: 5
+
+*** ADBuilder ***
+Permissões: 32
+Intenções: 27
+Atividades: 10
+Serviços: 15
+Receptores: 16
+Provedores: 5
