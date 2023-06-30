@@ -17,11 +17,10 @@ do
 		continue
 	fi
 
-	#AndroZoo Another API Key: 44e1937815802c68ee461e4f186f388107ad2ac5f10d0a38f93de5d56a7420ec
 	echo -n "Downloading APK $SHA256 ... "
 	/usr/bin/time -f "$SHA256 Download Elapsed Time = %e seconds, CPU = %P, Memory = %M KiB" \
 		-a -o $LOG_DIR/stats-"$SHA256_LIST_FILENAME".log curl -s -S -o $DOWNLOAD_QUEUE/$SHA256.apk \
-		--remote-header-name -G -d apikey=fa08a4ad8d8c9d3c56236d27bd9b99bb83c66c3fd65642d496ea2cbd13d4e8a4 \
+		--remote-header-name -G -d apikey="Insira sua API Key aqui" \
 		-d sha256=$SHA256 https://androzoo.uni.lu/api/download
 	CURL_EXEC=$(echo $?)
 	if [ -f $DOWNLOAD_QUEUE/$SHA256.apk ] && [ $CURL_EXEC -eq 0 ]
