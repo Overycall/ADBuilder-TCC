@@ -20,7 +20,7 @@ do
       sleep 2
       continue
   fi
-  # pega nome do APK sem PATH e sem extensao
+  # get apk name without PATH and without extension
   APK_FILENAME=$(basename $FILE .downloaded)
 
   if [ -f $EXTRACTED_DIR/$APK_FILENAME.json ]
@@ -28,17 +28,17 @@ do
       continue
   fi
 
-  # pega o LOCK do APK. se o LOCK ja existir, pula para o proximo APK.
+  # get LOCK from APK. if the LOCK already exists, skip to the next APK.
   if { set -C; 2>/dev/null > $EXTRACTION_QUEUE/$APK_FILENAME.lock; }; then
     trap "rm -f $EXTRACTION_QUEUE/$APK_FILENAME.lock" EXIT
   else
-    continue # arquivo de LOCK ja existe. vai para proximo APK.
+    continue # LOCK file already exists. go to next APK.
   fi
 
   mv $EXTRACTION_QUEUE/$APK_FILENAME.downloaded $EXTRACTION_QUEUE/$APK_FILENAME.extracting
 
   echo -n "Starting Processing APK File $APK_FILENAME ... "
-  # extrai as caracteristicas do APK e gera estatisticas
+  # extracts APK features and generates statistics
   /usr/bin/time -f "$APK_FILENAME Extraction Elapsed Time = %e seconds, CPU = %P, Memory = %M KiB" \
     -a -o $LOGS_DIR/stats-extraction-$COUNTER.log python3 extraction/extract_apk_features.py \
     --apk $DOWNLOADED_DIR/$APK_FILENAME.apk --outdir $EXTRACTION_QUEUE --logdir $LOGS_DIR
@@ -47,7 +47,7 @@ do
   then
     rm -f $EXTRACTION_QUEUE/$APK_FILENAME.extracting
     rm -f $EXTRACTION_QUEUE/$APK_FILENAME.lock
-    # sinaliza os processos de building que o CSV ja foi todo gravado
+    # signals the building processes that the JSON has already been processed
     touch $BUILDING_QUEUE/$APK_FILENAME.extracted
     mv $EXTRACTION_QUEUE/$APK_FILENAME.json $EXTRACTED_DIR/
     echo "DONE"

@@ -200,24 +200,24 @@ if __name__=="__main__":
     finished = False
     with output(output_type = 'list', initial_len = 11) as output_lines:
         while not finished:
-            output_lines[0] = colored(f'***** Status de Execução {iteration_counter} *****', 'magenta', attrs=['bold'])
-            #cprint(f'\n***** Status de Execução {iteration_counter} *****', 'magenta', attrs=['bold'])
-            output_lines[1] = colored(f'Tempo Decorrido: {timeit.default_timer() - start_time:.2f} Segundos', 'magenta', attrs=['bold'])
-            #cprint(f'Tempo Decorrido: {timeit.default_timer() - start_time:.2f} Segundos', 'magenta', attrs=['bold'])
+            output_lines[0] = colored(f'***** Execution Status {iteration_counter} *****', 'magenta', attrs=['bold'])
+            #cprint(f'\n***** Execution Status {iteration_counter} *****', 'magenta', attrs=['bold'])
+            output_lines[1] = colored(f'Elapsed Time: {timeit.default_timer() - start_time:.2f} Seconds', 'magenta', attrs=['bold'])
+            #cprint(f'Elapsed Time: {timeit.default_timer() - start_time:.2f} Seconds', 'magenta', attrs=['bold'])
             if args.download:
-                # informações do módulo de download
+                # download module information
                 downloaded_count = count_files(os.path.join('queues', 'download', 'downloaded'), '.apk')
                 info = f'Download: {downloaded_count}/{sha256_number}'
                 output_lines[2] = print_info(info, downloaded_count == sha256_number)
 
             if args.extraction:
-                # informações do módulo de extração
+                # extraction module information
                 extracted_count = count_files(os.path.join('queues', 'extraction', 'extracted'), '.json')
                 info = f'Extraction: {extracted_count}/{extraction_count}'
                 output_lines[3] = print_info(info, extracted_count == extraction_count)
 
             if args.labelling:
-                # informações do módulo de rotulação
+                # labelling module information
                 labeled_count = count_files(os.path.join('queues', 'labelling', 'labeled'), '.csv')
                 labeled_count += count_files(os.path.join('queues', 'labelling', 'Errors'), '.json')
                 info = f'Labelling: {labeled_count}/{sha256_number}'
@@ -234,10 +234,10 @@ if __name__=="__main__":
                         if os.path.getsize(dir_dataset) > 0:
                             df = pd.read_csv(dir_dataset)
                             output_lines[6] = '  '
-                            output_lines[7] = '*** Dataset em Construção ***'
-                            output_lines[8] = f'Número de Amostras: {len(df)}'
-                            output_lines[9] = f'Número de Características: {len(df.columns)}'
-                            output_lines[10] = f'Tamanho do Dataset: {os.path.getsize(dir_dataset)} bytes\n'
+                            output_lines[7] = '*** Dataset Under Construction ***'
+                            output_lines[8] = f'Number of Samples: {len(df)}'
+                            output_lines[9] = f'Number of Features: {len(df.columns)}'
+                            output_lines[10] = f'Dataset Size: {os.path.getsize(dir_dataset)} bytes\n'
                 except:
                     pass
 
@@ -247,4 +247,4 @@ if __name__=="__main__":
                 time.sleep(5)
 
     end_time = timeit.default_timer()
-    cprint(f'\n\n***** ADBuilder *****\nExecutado em {end_time - start_time:.2f} Segundos.\n', 'green', attrs=['bold'])
+    cprint(f'\n\n***** ADBuilder *****\nRun in {end_time - start_time:.2f} seconds.\n', 'green', attrs=['bold'])

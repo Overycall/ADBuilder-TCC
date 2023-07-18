@@ -24,7 +24,7 @@ def parse_args(argv):
     return args
 
 """
-implementação baseada na documentação
+implementation based on documentation
     https://github.com/androguard/androguard/issues/685
 """
 def get_op_codes(dx):
@@ -50,7 +50,7 @@ def get_op_codes(dx):
 
 def remove_apk(apk):
     #os.remove(apk)
-    print(apk, 'Successfully Removed.')
+    #print(apk, 'Successfully Removed.')
     return
 
 def get_intents(app):

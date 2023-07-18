@@ -25,11 +25,11 @@ done
 
 while [ 1 ]
 do
-    # contabilizar arquivos .downloaded e .extracted
+    # counting .downloaded and .extracted files
     EXT_DOWNLOAD=$(find $DOWNLOAD_QUEUE/downloaded -type f -name \*.apk | wc -l)
     EXT_COUNT=$(find $EXTRACTION_QUEUE/extracted -type f -name \*.json | wc -l)
 
-    # verifica se o download foi finalizado
+    # check if the download is finished
     if [ -f $DOWNLOAD_QUEUE/download.finished ] && [ $EXT_DOWNLOAD -eq $EXT_COUNT ]
     then
         touch $EXTRACTION_QUEUE/extraction.finished

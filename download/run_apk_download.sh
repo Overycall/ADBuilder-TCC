@@ -7,8 +7,11 @@ LOG_DIR=$4
 
 SHA256_LIST_FILENAME=$(basename $SHA256_LIST_FILE)
 DOWNLOADED_DIR=$DOWNLOAD_QUEUE/downloaded
-# pegar última linha (sha256) do arquivo
+# get the last line (sha256) of file
 LAST_SHA256=$(tail -n 1 $SHA256_LIST_FILE)
+
+# extrair APIKEY do arquivo txt do caminho X
+APIKEY_ANDROZOO=$(cat "./inputs/androzoo/apikey_androzoo.txt")
 
 while read SHA256 || [ -n "$SHA256" ]
 do
@@ -20,7 +23,7 @@ do
 	echo -n "Downloading APK $SHA256 ... "
 	/usr/bin/time -f "$SHA256 Download Elapsed Time = %e seconds, CPU = %P, Memory = %M KiB" \
 		-a -o $LOG_DIR/stats-"$SHA256_LIST_FILENAME".log curl -s -S -o $DOWNLOAD_QUEUE/$SHA256.apk \
-		--remote-header-name -G -d apikey="Insira sua API Key aqui" \
+		--remote-header-name -G -d apikey=$APIKEY_ANDROZOO \
 		-d sha256=$SHA256 https://androzoo.uni.lu/api/download
 	CURL_EXEC=$(echo $?)
 	if [ -f $DOWNLOAD_QUEUE/$SHA256.apk ] && [ $CURL_EXEC -eq 0 ]
@@ -32,7 +35,7 @@ do
 	  echo "ERROR"
 	fi
 
-	# verificar se o último APK do arquivo já foi baixado
+	# check if the last APK of the file has already been downloaded
 	if [ -f $DOWNLOADED_DIR/$LAST_SHA256.apk ]
 	then
 		mv $DOWNLOAD_QUEUE/$SHA256_LIST_FILENAME $DOWNLOAD_QUEUE/$SHA256_LIST_FILENAME.finished

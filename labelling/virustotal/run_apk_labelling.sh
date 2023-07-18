@@ -9,7 +9,7 @@ LOG_DIR=$5
 SHA256_LIST_FILENAME=$(basename $SHA256_LIST_FILE)
 LABELED_DIR=$LABELLING_QUEUE/labeled
 
-# pegar última linha (sha256) do arquivo
+# get the last line (sha256) of file
 LAST_SHA256=$(tail -n 1 $SHA256_LIST_FILE)
 
 while read SHA256 || [ -n "$SHA256" ]
@@ -34,7 +34,7 @@ do
 
 	echo -e "Finished $SHA256 Label!!!\n"
 
-	# verificar se o último APK do arquivo já foi baixado
+	# check if the last APK of the file has already been downloaded
 	if [ -f $LABELED_DIR/$LAST_SHA256.csv ] || [ -f $LABELLING_QUEUE/Errors/$LAST_SHA256.json ]
 	then
 		mv $LABELLING_QUEUE/$SHA256_LIST_FILENAME $LABELLING_QUEUE/$SHA256_LIST_FILENAME.finished

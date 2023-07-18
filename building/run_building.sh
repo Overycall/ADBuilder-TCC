@@ -17,10 +17,10 @@ TS=$(date +%Y%m%d%H%M%S)
 
 while [ 1 ]
 do
-  # verifica se existe algum arquivo .extracted no diretorio de building
+  # checks if there is any .extracted file in the building directory
   for FILE in $(find $BUILDING_QUEUE -type f -name \*.extracted)
   do
-    # pega nome do APK sem PATH e sem extensao
+    # get apk name without PATH and without extension
     APK_FILENAME=$(basename $FILE .extracted)
 
     if [ ! -f $BUILDING_QUEUE/Clean/$APK_FILENAME.csv ]
@@ -39,7 +39,7 @@ do
           --incsv $BUILDING_QUEUE/Clean/$APK_FILENAME.csv \
           --inlabeled $LABELLING_QUEUE/labeled/$APK_FILENAME.csv \
           --outdir $BUILDING_QUEUE/Final/ &
-        # PID do processo de concatenacao, para o building esperar esse PID para matar os processos
+        # PID of the concatenation process, for the building to wait for this PID to kill the processes
         PID_CONCAT=$$
         wait
         rm -f $BUILDING_QUEUE/$APK_FILENAME.extracted
@@ -51,10 +51,10 @@ do
   EXTRACTED_COUNT=$(find $EXTRACTION_QUEUE/extracted -type f -name \*.json | wc -l)
   ADDED_COUNT=$(find $BUILDING_QUEUE/Clean -type f -name \*.added | wc -l)
 
-  # verificar se todos os CSVs já foram processados
+  # check if all CSVs have already been processed
   if [ -f $EXTRACTION_QUEUE/extraction.finished ] && [ -f $LABELLING_QUEUE/labelling.finished ] && [ $EXTRACTED_COUNT -eq $ADDED_COUNT ]
   then
-    #esperar o PID do processo atual
+    # wait for current process PID
     wait $PID_CONCAT > /dev/null 2>&1
     touch $BUILDING_QUEUE/building.finished
     exit
