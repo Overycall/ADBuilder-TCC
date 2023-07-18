@@ -162,7 +162,7 @@ python3 adbuilder.py --download --file inputs/androzoo/input_sha256.txt --extrac
 python3 adbuilder.py  --extraction --labelling --file inputs/androzoo/input_sha256.txt --vt_keys ./inputs/virustotal_api_keys.txt --building
 ```
 
-***OBS1: Importante que cada usuário utilize sua própria chave de API, obtida pelo site do [AndroZoo](androzoo.uni.lu), para realizar o download dos APKs. Insira sua chave de API no arquivo: /inputs/androzoo/apikey_androzoo.txt***
+***OBS1: Importante que cada usuário utilize sua própria chave de API, obtida pelo site do [AndroZoo](https://androzoo.uni.lu), para realizar o download dos APKs. Insira sua chave de API no arquivo: /inputs/androzoo/apikey_androzoo.txt***
 
 ***OBS2: Será disponibilizada uma chave de API para utilizar o serviço do VirusTotal. Porém, é importante que cada usuário utilize sua própria devido as limitações diárias.***
 
@@ -333,7 +333,7 @@ python3 adbuilder.py --download --file inputs/androzoo/input_sha256.txt --extrac
 python3 adbuilder.py  --extraction --labelling --file inputs/androzoo/input_sha256.txt --vt_keys ./inputs/virustotal_api_keys.txt --building
 ```
 
-***NOTE 1: It is important that each user uses their own API key, obtained from the [AndroZoo website](androzoo.uni.lu), to download the APKs. Insert your API key in the file: /inputs/androzoo/apikey_androzoo.txt.***
+***NOTE 1: It is important that each user uses their own API key, obtained from the [AndroZoo website](https://androzoo.uni.lu), to download the APKs. Insert your API key in the file: /inputs/androzoo/apikey_androzoo.txt.***
 
 ***NOTE 2: An API key will be provided to use the VirusTotal service. However, it is important that each user uses their own key due to the daily limitations.***
 
